@@ -139,7 +139,8 @@ export function toInputTensor(input: DeepLabInput) {
     const targetHeight = Math.round(height * resizeRatio);
     const targetWidth = Math.round(width * resizeRatio);
     return tf.image.resizeBilinear(image, [targetHeight, targetWidth])
-        .expandDims(0);
+        .expandDims(0)
+        .cast(input.dtype);
   });
 }
 
